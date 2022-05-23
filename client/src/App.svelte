@@ -27,6 +27,10 @@
         <p class="message">ここに文章</p>
       </div>
     </div>
+    <div class="message-form-wrapper">
+      <input type="text" placeholder="Message to send">
+      <button type="submit">submit</button>
+    </div>
   </div>
 </main>
 
@@ -64,5 +68,11 @@
   }
   .mine .message {
     background-color: #85e249;
+  }
+  .message-form-wrapper {
+    display: flex;
+  }
+  .message-form-wrapper input[type="text"] {
+    flex: 1 1 auto;
   }
 </style>
