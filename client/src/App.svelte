@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Message from './components/Message.svelte';
   let messages: { userId: string; message: string }[] = []
   let testDate = [
     { userId: "test0001", message: "test1"},
@@ -7,6 +8,7 @@
     { userId: "test0002", message: "test4"},
     { userId: "test0001", message: "test5"}
   ]
+  let currentUserId = "test0001"
   messages = testDate
 </script>
 
@@ -14,18 +16,9 @@
   <div class="wrapper">
     <h1>Svelte Chat</h1>
     <div class="board">
-      <div class="mine">
-        <p class="message">ここに文章</p>
-      </div>
-      <div>
-        <p class="message">ここに文章</p>
-      </div>
-      <div class="mine">
-        <p class="message">ここに文章</p>
-      </div>
-      <div>
-        <p class="message">ここに文章</p>
-      </div>
+      {#each messages as {userId, message}}
+        <Message currentUserId="{currentUserId}" userId="{userId}" message="{message}" />
+      {/each}
     </div>
     <div class="message-form-wrapper">
       <input type="text" placeholder="Message to send">
@@ -55,19 +48,6 @@
     height: 80vh;
     overflow: scroll;
     scroll-behavior: smooth;
-  }
-  .mine {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  .message {
-    border-radius: 10px;
-    padding: 10px;
-    background-color: #fff;
-    display: inline-block;
-  }
-  .mine .message {
-    background-color: #85e249;
   }
   .message-form-wrapper {
     display: flex;
