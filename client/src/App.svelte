@@ -1,5 +1,6 @@
 <script lang="ts">
   import Message from './components/Message.svelte';
+  import MessageForm from './components/MessageForm.svelte';
   let messages: { userId: string; message: string }[] = []
   let testDate = [
     { userId: "test0001", message: "test1"},
@@ -21,8 +22,7 @@
       {/each}
     </div>
     <div class="message-form-wrapper">
-      <input type="text" placeholder="Message to send">
-      <button type="submit">submit</button>
+      <MessageForm />
     </div>
   </div>
 </main>
@@ -51,8 +51,5 @@
   }
   .message-form-wrapper {
     display: flex;
-  }
-  .message-form-wrapper input[type="text"] {
-    flex: 1 1 auto;
   }
 </style>
