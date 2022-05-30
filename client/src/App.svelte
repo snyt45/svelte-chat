@@ -1,6 +1,7 @@
 <script lang="ts">
   import Message from './components/Message.svelte';
   import MessageForm from './components/MessageForm.svelte';
+  import { getUserId } from './lib/getUserId';
   let messages: { userId: string; message: string }[] = []
   let testDate = [
     { userId: "test0001", message: "test1"},
@@ -9,7 +10,7 @@
     { userId: "test0002", message: "test4"},
     { userId: "test0001", message: "test5"}
   ]
-  let currentUserId = "test0001"
+  const currentUserId = getUserId()
   messages = testDate
 </script>
 
