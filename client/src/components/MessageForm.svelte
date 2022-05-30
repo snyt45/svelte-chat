@@ -1,8 +1,17 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+
+  export let message;
+
+  const dispatch = createEventDispatcher();
+
+  const handleSubmit = () => {
+    dispatch('submit');
+  };
 </script>
 
-<input type="text" placeholder="Message to send">
-<button type="submit">submit</button>
+<input bind:value="{message}" type="text" placeholder="Message to send">
+<button on:click="{handleSubmit}">submit</button>
 
 <style>
   input[type="text"] {

@@ -2,16 +2,13 @@
   import Message from './components/Message.svelte';
   import MessageForm from './components/MessageForm.svelte';
   import { getUserId } from './lib/getUserId';
+  let message: string = ''
   let messages: { userId: string; message: string }[] = []
-  let testDate = [
-    { userId: "test0001", message: "test1"},
-    { userId: "test0002", message: "test2"},
-    { userId: "test0001", message: "test3"},
-    { userId: "test0002", message: "test4"},
-    { userId: "test0001", message: "test5"}
-  ]
+  const updateMessages = () => {
+    messages = [...messages, {userId: currentUserId, message}]
+    message = ''
+  }
   const currentUserId = getUserId()
-  messages = testDate
 </script>
 
 <main>
@@ -23,7 +20,7 @@
       {/each}
     </div>
     <div class="message-form-wrapper">
-      <MessageForm />
+      <MessageForm bind:message on:submit="{updateMessages}"/>
     </div>
   </div>
 </main>
